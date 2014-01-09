@@ -1,0 +1,42 @@
+<head>
+  <title>roshambo</title>
+</head>
+
+<body>
+  {{> header}}
+  {{> games}}
+</body>
+
+<template name="header">
+  <div class="header">
+    {{#if currentUser}}
+      {{> loggedInHeader}}
+    {{else}}
+      <div class="login-header">
+        To play, please {{loginButtons}}
+      </div>
+    {{/if}}
+  </div>
+  <hr />
+</template>
+
+<template name="loggedInHeader">
+  <div style="float: left;">
+    {{> newGame}}
+  </div>
+
+  <div class="sign-out" style="float: right;">
+    <div class="button sign-out">
+      Sign out
+    </div>
+    {{> profileImage currentUser._id}}
+  </div>
+
+  <div style="clear: both;"></div>
+</template>
+
+<!-- expects to find meteor user id as the data context -->
+<template name="profileImage">
+  <img class="profile-image"
+       src="https://graph.facebook.com/{{user.services.facebook.id}}/picture" />
+</template>

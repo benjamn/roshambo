@@ -1,0 +1,46 @@
+<template name="newGame">
+  <div class="new-game">
+    <div class="button">Start a new round</div>
+  </div>
+</template>
+
+<template name="games">
+  {{#each games}}
+    <div class="game">
+      <div style="display: inline-block; {{#if player1Won}}border: 2px solid red{{/if}}">
+        {{> profileImage player1Id}}
+      </div>
+      {{#if canPlay1}}
+        <div class="button rock1">Rock</div>
+        <div class="button paper1">Paper</div>
+        <div class="button scissors1">Scissors</div>
+      {{/if}}
+      {{#if showPlayed1Move}}
+        played {{player1Move}}
+      {{/if}}
+
+      VS
+
+      {{#if player2Id}}
+        <div style="display: inline-block; {{#if player2Won}}border: 2px solid red{{/if}}">
+          {{> profileImage player2Id}}
+        </div>
+        {{#if canPlay2}}
+          <div class="button rock2">Rock</div>
+          <div class="button paper2">Paper</div>
+          <div class="button scissors2">Scissors</div>
+        {{/if}}
+        {{#if showPlayed2Move}}
+          played {{player2Move}}
+        {{/if}}
+      {{else}}
+        {{#if canJoin}}
+          <div class="button join">Join</div>
+        {{else}}
+          (waiting for another player)
+        {{/if}}
+      {{/if}}
+    </div>
+  {{/each}}
+</template>
+
