@@ -7,7 +7,7 @@ curl https://install.meteor.com/ | sh
 
 To install Meteor on Windows: http://win.meteor.com/
 
-To run:
+To run this app:
 ```
 git clone git@github.com:avital/roshambo.git
 cd roshambo
